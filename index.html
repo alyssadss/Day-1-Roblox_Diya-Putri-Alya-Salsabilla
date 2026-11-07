@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Student Task Planner untuk membantu mahasiswa mengatur tugas dan deadline." />
+  <title>Student Task Planner</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Student Task Planner beranda">
+        <span class="brand-icon">✓</span>
+        <span>Task<span class="brand-accent">Mate</span></span>
+      </a>
+      <span class="date-label" id="todayLabel">Your study space</span>
+    </header>
+
+    <section class="hero" id="top">
+      <div>
+        <p class="eyebrow">STUDENT WORKSPACE</p>
+        <h1>Plan your work.<br /><span>Own your time.</span></h1>
+        <p class="hero-copy">Atur tugas kuliah, pantau deadline, dan selesaikan semuanya satu per satu.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-card art-card-back"></div>
+        <div class="art-card art-card-front"><span>✦</span><strong>Stay<br />focused</strong><small>One task at a time</small></div>
+        <div class="art-sparkle">✳</div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Ringkasan tugas">
+      <article class="stat-card"><span class="stat-icon purple">▤</span><div><p>Total tugas</p><strong id="totalCount">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon orange">◷</span><div><p>Belum selesai</p><strong id="pendingCount">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon green">✓</span><div><p>Selesai</p><strong id="completedCount">0</strong></div></article>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel form-panel">
+        <div class="section-heading"><div><p class="eyebrow">GET ORGANIZED</p><h2>Tambah tugas</h2></div><span class="heading-mark">＋</span></div>
+        <form id="taskForm">
+          <label for="taskTitle">Nama tugas</label>
+          <input id="taskTitle" name="title" type="text" placeholder="Contoh: Membuat desain poster" maxlength="90" required />
+
+          <div class="form-row">
+            <div class="field"><label for="taskCourse">Mata kuliah</label><input id="taskCourse" name="course" type="text" placeholder="Contoh: Desain Grafis" maxlength="50" /></div>
+            <div class="field"><label for="taskDate">Deadline</label><input id="taskDate" name="dueDate" type="date" required /></div>
+          </div>
+
+          <label for="taskPriority">Prioritas</label>
+          <select id="taskPriority" name="priority">
+            <option value="low">Rendah</option>
+            <option value="medium" selected>Sedang</option>
+            <option value="high">Tinggi</option>
+          </select>
+          <button class="primary-button" type="submit">＋ Tambahkan tugas</button>
+          <p class="form-note" id="formMessage" role="status" aria-live="polite">Isi detail tugasmu untuk mulai merencanakan.</p>
+        </form>
+      </section>
+
+      <section class="panel tasks-panel">
+        <div class="section-heading task-heading"><div><p class="eyebrow">YOUR CHECKLIST</p><h2>Daftar tugas</h2></div><span class="task-total" id="visibleCount">0 tugas</span></div>
+        <div class="filters" role="group" aria-label="Filter tugas">
+          <button class="filter-button active" data-filter="all" type="button">Semua</button>
+          <button class="filter-button" data-filter="pending" type="button">Belum selesai</button>
+          <button class="filter-button" data-filter="completed" type="button">Selesai</button>
+        </div>
+        <div id="taskList" class="task-list" aria-live="polite"></div>
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">✎</div>
+          <h3>Belum ada tugas</h3>
+          <p>Tambahkan tugas pertamamu melalui formulir di samping.</p>
+        </div>
+      </section>
+    </section>
+    <footer><span>Made for your better study days.</span><span>Student Task Planner © 2026</span></footer>
+  </main>
+</body>
+</html>
